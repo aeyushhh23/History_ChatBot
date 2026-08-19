@@ -41,6 +41,7 @@ export default function Sidebar({ isOpen, onClose, onSend, loading }) {
         className={`
           fixed lg:relative inset-y-0 left-0 z-50 lg:z-auto
           w-72 lg:w-64 xl:w-72
+          h-screen max-h-screen
           bg-ink-950 lg:bg-ink-950/50
           border-r border-ink-850/40
           flex flex-col
@@ -126,7 +127,7 @@ export default function Sidebar({ isOpen, onClose, onSend, loading }) {
                   className="w-full text-left px-2.5 py-2 rounded-lg hover:bg-ink-900/50 transition-colors group flex items-start gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <ArrowRight className="w-3 h-3 text-ink-600 mt-0.5 flex-shrink-0 group-hover:text-accent-400 group-hover:translate-x-0.5 transition-all" />
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <span className="block text-2xs text-accent-500/60 uppercase tracking-wider font-medium mb-0.5">
                       {q.topic}
                     </span>
