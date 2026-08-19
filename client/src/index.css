@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   HISTORICA — Design System Foundation
+   ═══════════════════════════════════════════ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(196, 131, 47, 0.15) transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0d0f12;
+    color: #e3e5ea;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Accessible focus */
+  :focus-visible {
+    outline: 2px solid rgba(196, 131, 47, 0.6);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(196, 131, 47, 0.25);
+    color: #faecd8;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Scrollbars
+   ═══════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 131, 47, 0.12);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 131, 47, 0.25);
+}
+
+/* ═══════════════════════════════════════════
+   Reduced Motion
+   ═══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Component Utilities
+   ═══════════════════════════════════════════ */
+
+@layer components {
+  /* Sidebar overlay for mobile */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 40;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer-line {
+    background: linear-gradient(
+      90deg,
+      rgba(196, 131, 47, 0.04) 0%,
+      rgba(196, 131, 47, 0.1) 50%,
+      rgba(196, 131, 47, 0.04) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+    border-radius: 4px;
+  }
+
+  /* Timeline dot decoration */
+  .timeline-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(196, 131, 47, 0.4);
+    box-shadow: 0 0 0 2px rgba(196, 131, 47, 0.1);
+    flex-shrink: 0;
+  }
+
+  /* Timeline vertical line */
+  .timeline-line {
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgba(196, 131, 47, 0.15),
+      rgba(196, 131, 47, 0.03)
+    );
+  }
+
+  /* Subtle border divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(196, 131, 47, 0.1),
+      transparent
+    );
+  }
+
+  /* Input glow on focus */
+  .input-glow:focus-within {
+    box-shadow: 0 0 0 1px rgba(196, 131, 47, 0.3),
+                0 0 20px -4px rgba(196, 131, 47, 0.12);
+  }
+
+  /* Era badge chip */
+  .era-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+    background: rgba(196, 131, 47, 0.08);
+    color: rgba(196, 131, 47, 0.7);
+    border: 1px solid rgba(196, 131, 47, 0.1);
+  }
+
+  /* Copy button */
+  .copy-btn {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .msg-container:hover .copy-btn {
+    opacity: 1;
+  }
+
+  /* Prompt card hover lift */
+  .prompt-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .prompt-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
+  }
+  .prompt-card:active {
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Typography utilities
+   ═══════════════════════════════════════════ */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
