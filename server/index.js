@@ -17,9 +17,9 @@ console.log('GEMINI API KEY LOADED:', process.env.GEMINI_API_KEY ? 'Yes (length:
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Enable CORS with support for frontend client origin
+// Enable CORS with support for all origins (for separate frontend deployment)
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: '*',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
