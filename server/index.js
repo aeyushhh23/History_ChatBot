@@ -35,6 +35,15 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'History Chatbot Server is running.' });
 });
 
+// Serve the built React frontend
+const clientDist = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDist));
+
+// Fallback: serve index.html for any non-API route (SPA routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDist, 'index.html'));
+});
+
 // Start server after initializing the in-memory vector store
 const startServer = () => {
   console.log('Initializing Vector Store...');
